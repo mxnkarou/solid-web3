@@ -1,1 +1,1 @@
-# solid-web3
+# POC SolidJS + Web3 Integration
