@@ -1,4 +1,5 @@
 require('@nomiclabs/hardhat-waffle');
+const env = require('./env.ts');
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -24,6 +25,10 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337,
+    },
+    ropsten: {
+      url: env.INFURA_URL_ROPSTEN,
+      accounts: [`0x${env.ACCOUNT_KEY}`],
     },
   },
 };

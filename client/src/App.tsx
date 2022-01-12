@@ -5,16 +5,19 @@ import type { Component } from 'solid-js';
 import styles from './App.module.css';
 
 // Functional Imports
-import { createSignal } from 'solid-js';
+import { createSignal, createEffect } from 'solid-js';
 import { ethers } from 'ethers';
 
 // Smart Contract ABI (Application Program Interface) Import
 import Greeter from './artifacts/contracts/Greeter.sol/Greeter.json';
 
-const greeterAdress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+const greeterAdress = '0x44A6e55ecA950ef351fC40783891fDEEa6aC14ef';
 
 const App: Component = () => {
   const [greeting, setGreetingValue] = createSignal('');
+  const [greetingText, setGreetingText] = createSignal(
+    'Fetch to load current Greeting...'
+  );
 
   // Prompts user to connect the MetaMask Wallet & returns the Accounts (Array).
   const requestAccount = async () => {
@@ -35,6 +38,7 @@ const App: Component = () => {
       try {
         // Now we have access to the contract methods.
         const data = await contract.greet();
+        setGreetingText(data);
         console.log('Data: ', data);
       } catch (err) {
         console.log('Error: ', err);
@@ -75,6 +79,7 @@ const App: Component = () => {
   return (
     <div class={styles.App}>
       <header class={styles.header}>
+        <h1>{greetingText()}</h1>
         <div>
           <button onClick={fetchGreeting}>Fetch Greeting!</button>
         </div>
