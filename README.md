@@ -1,6 +1,6 @@
 ## Proof of Concept SolidJS App + Solidity Smart Contracts (Hardhat)
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+### Deployed on ETH Ropsten Testnet.
 
 ## Available Scripts
 
